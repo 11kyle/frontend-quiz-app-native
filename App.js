@@ -34,6 +34,7 @@ export default function App() {
           name='Home'
           component={HomeScreen}
           options={{
+            headerShown: false,
             title: '',
             headerRight: () => (
               <View 
@@ -60,7 +61,8 @@ export default function App() {
         <Stack.Screen
           name='HTML'
           component={HTMLScreen}
-          // options={{
+          options={{
+            headerShown: false,
             // headerTitle: () => (
             //   <View
             //     style={{ flex: 0, flexDirection: 'row', alignItems: 'center', columnGap: 16 }}
@@ -97,19 +99,28 @@ export default function App() {
             //     <Image source={require('./assets/icon-moon-dark-16-regular.png')} />
             //   </View>
             // )
-          // }}
+          }}
         />
         <Stack.Screen
           name='CSS'
           component={CSSScreen}
+          options={{
+            headerShown: false,
+          }}
         />
         <Stack.Screen
           name='JavaScript'
           component={JavaScriptScreen}
+          options={{
+            headerShown: false,
+          }}
         />
         <Stack.Screen
           name='Accessibility'
           component={AccessibilityScreen}
+          options={{
+            headerShown: false,
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,4 +1,6 @@
+import { SafeAreaView } from "react-native";
 import { QuizView } from "./QuizView";
+import { Navbar } from "./Navbar";
 
 const data = [
   {
@@ -105,6 +107,9 @@ const data = [
 
 export const CSSScreen = ({navigation, route}) => {
   return (
-    <QuizView data={data} />
+    <SafeAreaView style={{ backgroundColor: '#F4F6FA', flex: 1 }}>
+      <Navbar title="CSS" />
+      <QuizView data={data} />
+    </SafeAreaView>
   );
 };
