@@ -1,5 +1,5 @@
 import { Button, Text, View, StyleSheet, Pressable, Switch, Image, SafeAreaView } from "react-native";
-import { Navbar } from "./Navbar";
+import { Navbar } from "../components/Navbar";
 
 export const HomeScreen = ({navigation}) => {
   return (

@@ -1,6 +1,6 @@
 import { SafeAreaView } from "react-native";
-import { QuizView } from "./QuizView";
-import { Navbar } from "./Navbar";
+import { QuizView } from "../components/QuizView";
+import { Navbar } from "../components/Navbar";
 
 const data = [
   {

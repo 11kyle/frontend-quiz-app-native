@@ -1,16 +1,22 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Image, Pressable, StyleSheet, Text, View } from 'react-native'
 import * as Haptics from 'expo-haptics'
 import { ScoreView } from './ScoreView'
 import { ProgressBar } from './ProgressBar'
+import { Toast } from './Toast'
 
 export const QuizView = ({ data }) => {
   const [isSelected, setIsSelected] = useState('')
   const [isCorrect, setIsCorrect] = useState(null)
   const [index, setIndex] = useState(0)
   const [score, setScore] = useState(0)
+  const [showError, setShowError] = useState(false)
 
   const handleSubmit = () => {
+    if (!isSelected) {
+      setShowError(true)
+      return
+    }
     if (isSelected === data[index].answer) {
       setIsCorrect(true)
     } else {
@@ -33,6 +39,12 @@ export const QuizView = ({ data }) => {
     setIsCorrect(null)
     setIndex(previousState => previousState + 1)
   }
+
+  useEffect(() => {
+    if (isSelected) {
+      setShowError(false)
+    }
+  }, [isSelected])
 
   return (
     <View style={styles.viewContainer}>
@@ -135,11 +147,14 @@ export const QuizView = ({ data }) => {
                 ]
               )}
               onPress={() => isCorrect === null ? handleSubmit() : nextQuestion()}
+              // disabled={!isSelected}
             >
               <Text style={{ color: '#FFF', fontSize: 18, fontWeight: '500', fontFamily: 'Rubik_500Medium' }}>
                 {isCorrect === null ? 'Submit Answer' : 'Next Question'}
               </Text>
             </Pressable>
+            {/* Error Message */}
+            {showError && <View style={{ marginHorizontal: 'auto'}}><Toast /></View>}
           </View>
         </>
       )}
@@ -182,6 +197,7 @@ const styles = StyleSheet.create({
     flex: 0,
     alignItems: 'center',
     justifyContent: 'center',
-    height: 56
+    height: 56,
+    // marginVertical: 32
   }
 })
